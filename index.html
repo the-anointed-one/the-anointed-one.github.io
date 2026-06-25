@@ -943,14 +943,14 @@ if (REDUCED) {
     // Set initial hidden state via GSAP (not CSS) so content shows if JS fails
     gsap.set(heroBits, { opacity: 0 });
 
-    const heroTl = gsap.timeline({ delay: 0.3, onComplete: revealHero });
+    const heroTl = gsap.timeline({ delay: 0.1, onComplete: revealHero });
     heroTl
-      .from('.hero-badge',  { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' })
+      .from('.hero-badge',  { opacity: 0, y: 20, duration: 0.4, ease: 'power3.out' })
       .set('.hero h1', { opacity: 1 })
-      .from('.hero h1 .word', { opacity: 0, y: 40, rotateX: -40, stagger: 0.06, duration: 0.7, ease: 'power3.out' }, '-=0.3')
-      .from('.hero-sub',    { opacity: 0, y: 30, duration: 0.7, ease: 'power3.out' }, '-=0.4')
-      .from('.metric',      { opacity: 0, y: 22, stagger: 0.13, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-      .from('.hero-ctas',   { opacity: 0, y: 18, duration: 0.5, ease: 'power3.out' }, '-=0.3');
+      .from('.hero h1 .word', { opacity: 0, y: 30, rotateX: -40, stagger: 0.03, duration: 0.5, ease: 'power3.out' }, '-=0.3')
+      .from('.hero-sub',    { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' }, '-=0.4')
+      .from('.metric',      { opacity: 0, y: 15, stagger: 0.05, duration: 0.4, ease: 'power3.out' }, '-=0.4')
+      .from('.hero-ctas',   { opacity: 0, y: 15, duration: 0.4, ease: 'power3.out' }, '-=0.3');
   } catch (err) {
     revealHero();
   }
