@@ -52,6 +52,24 @@
   .btn-secondary{background:transparent;color:var(--blue);padding:0.8rem 1.8rem;border-radius:var(--radius);font-weight:600;font-size:0.95rem;text-decoration:none;border:2px solid var(--blue);transition:all 0.2s;display:inline-block;}
   .btn-secondary:hover{background:var(--accent);transform:translateY(-2px);}
 
+  /* HERO ENTRANCE CSS ANIMATION */
+  @keyframes heroEntrance {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge, .hero h1, .hero-sub, .metric, .hero-ctas {
+    opacity: 0;
+    animation: heroEntrance 0.6s ease-out forwards;
+  }
+  .hero-badge { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .metric:nth-child(1) { animation-delay: 0.4s; }
+  .metric:nth-child(2) { animation-delay: 0.45s; }
+  .metric:nth-child(3) { animation-delay: 0.5s; }
+  .metric:nth-child(4) { animation-delay: 0.55s; }
+  .hero-ctas { animation-delay: 0.6s; }
+
   /* PROOF BAR */
   .proof-bar{background:var(--dark);padding:1rem 5%;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;}
   .proof-item{display:flex;align-items:center;gap:0.6rem;}
@@ -906,57 +924,7 @@ if (!REDUCED && !IS_MOBILE) {
   });
 })();
 
-/* ── SPLIT HEADLINE INTO ANIMATABLE WORDS ── */
-// Wrap each word of the h1's text nodes in <span class="word">, leaving
-// existing element children (the <span>, <br>) intact.
-(function splitHeadline() {
-  const h1 = document.querySelector('.hero h1');
-  if (!h1) return;
-  const wrap = (node) => {
-    const frag = document.createDocumentFragment();
-    node.textContent.split(/(\s+)/).forEach(tok => {
-      if (tok.trim() === '') { frag.appendChild(document.createTextNode(tok)); return; }
-      const s = document.createElement('span');
-      s.className = 'word';
-      s.textContent = tok;
-      frag.appendChild(s);
-    });
-    node.replaceWith(frag);
-  };
-  // Walk a snapshot of child nodes (live list mutates as we replace).
-  [...h1.childNodes].forEach(n => {
-    if (n.nodeType === 3) wrap(n);
-    else if (n.tagName === 'SPAN') [...n.childNodes].forEach(c => { if (c.nodeType === 3) wrap(c); });
-  });
-})();
-
-/* ── GSAP HERO ENTRANCE ── */
-const heroBits = ['.hero-badge', '.hero h1', '.hero-sub', '.metric', '.hero-ctas'];
-// Failsafe: no matter what the animation does, force the full hero copy
-// visible. Guarantees the headline/sub/metrics/CTAs always render.
-const revealHero = () => gsap.set(['.hero-inner', ...heroBits, '.hero h1 .word'], { opacity: 1, clearProps: 'transform' });
-
-if (REDUCED) {
-  revealHero();
-} else {
-  try {
-    // Set initial hidden state via GSAP (not CSS) so content shows if JS fails
-    gsap.set(heroBits, { opacity: 0 });
-
-    const heroTl = gsap.timeline({ delay: 0.1, onComplete: revealHero });
-    heroTl
-      .from('.hero-badge',  { opacity: 0, y: 20, duration: 0.4, ease: 'power3.out' })
-      .set('.hero h1', { opacity: 1 })
-      .from('.hero h1 .word', { opacity: 0, y: 30, rotateX: -40, stagger: 0.03, duration: 0.5, ease: 'power3.out' }, '-=0.3')
-      .from('.hero-sub',    { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' }, '-=0.4')
-      .from('.metric',      { opacity: 0, y: 15, stagger: 0.05, duration: 0.4, ease: 'power3.out' }, '-=0.4')
-      .from('.hero-ctas',   { opacity: 0, y: 15, duration: 0.4, ease: 'power3.out' }, '-=0.3');
-  } catch (err) {
-    revealHero();
-  }
-  // Hard backstop in case anything stalls the timeline.
-  setTimeout(revealHero, 4000);
-}
+/* ── GSAP HERO ENTRANCE REPLACED BY CSS ANIMATIONS ── */
 
 /* ── COUNTER ANIMATION ── */
 document.querySelectorAll('.metric-num').forEach(el => {
