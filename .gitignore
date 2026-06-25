@@ -1,0 +1,8 @@
+# Internal / source documents — not for publishing
+*.docx
+
+# Raw screenshot exports (clean copies are committed as rechargepro-*.png)
+Screenshot *.png
+
+# OS cruft
+.DS_Store

@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benjamin Ajah — Digital Strategist, UI/UX Designer & Data Analyst</title>
+<meta name="description" content="Benjamin Ajah — 9+ years in UX design, digital strategy, data visualisation, and full-stack development. Google Campaign Manager 360 certified. Available for remote roles.">
+<style>
+  :root {
+    --blue:#1A56DB; --dark:#0F172A; --mid:#475569; --light:#F8FAFC;
+    --border:#E2E8F0; --accent:#EBF4FF; --green:#059669; --teal:#0891B2;
+    --orange:#EA580C; --radius:10px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fff;color:var(--dark);line-height:1.6;overflow-x:hidden;}
+
+  /* CURSOR GLOW */
+  .cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(26,86,219,0.07) 0%,transparent 70%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);top:0;left:0;}
+
+  /* SCROLL PROGRESS BAR */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:101;}
+
+  /* WORD REVEAL */
+  .word{display:inline-block;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 5%;height:60px;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-weight:700;font-size:1rem;color:var(--dark);text-decoration:none;}
+  .nav-logo span{color:var(--blue);}
+  .nav-links{display:flex;gap:1.8rem;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--mid);font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-cta{background:var(--blue);color:#fff!important;padding:0.4rem 1rem;border-radius:6px;font-weight:600!important;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 60px;position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 55%,var(--accent) 100%);}
+  #hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  .hero-inner{max-width:760px;position:relative;z-index:1;}
+  .hero-badge{display:inline-block;background:var(--accent);color:var(--blue);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;padding:0.3rem 0.85rem;border-radius:20px;margin-bottom:1.5rem;border:1px solid #c3d9f8;text-transform:uppercase;}
+  .hero h1{font-size:clamp(2.2rem,5.5vw,3.4rem);font-weight:800;line-height:1.1;color:var(--dark);margin-bottom:1rem;}
+  .hero h1 span{color:var(--blue);}
+  .hero-sub{font-size:1.05rem;color:var(--mid);max-width:600px;margin-bottom:2rem;line-height:1.8;}
+  .hero-metrics{display:flex;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+  .metric{}
+  .metric-num{font-size:2rem;font-weight:800;color:var(--blue);}
+  .metric-label{font-size:0.78rem;color:var(--mid);font-weight:500;}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{background:var(--blue);color:#fff;padding:0.8rem 1.8rem;border-radius:var(--radius);font-weight:600;font-size:0.95rem;text-decoration:none;transition:background 0.2s,transform 0.2s;display:inline-block;}
+  .btn-primary:hover{background:#1347b8;transform:translateY(-2px);}
+  .btn-secondary{background:transparent;color:var(--blue);padding:0.8rem 1.8rem;border-radius:var(--radius);font-weight:600;font-size:0.95rem;text-decoration:none;border:2px solid var(--blue);transition:all 0.2s;display:inline-block;}
+  .btn-secondary:hover{background:var(--accent);transform:translateY(-2px);}
+
+  /* PROOF BAR */
+  .proof-bar{background:var(--dark);padding:1rem 5%;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;}
+  .proof-item{display:flex;align-items:center;gap:0.6rem;}
+  .proof-icon{font-size:1rem;}
+  .proof-text{font-size:0.8rem;color:#cbd5e1;font-weight:500;}
+  .proof-text strong{color:#fff;}
+
+  /* TOOLS STRIP */
+  .tools-strip{background:#1e293b;padding:0.75rem 5%;display:flex;align-items:center;gap:2rem;overflow-x:auto;white-space:nowrap;}
+  .tools-label{color:#94a3b8;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;flex-shrink:0;}
+  .tools-list{display:flex;gap:1.5rem;}
+  .tools-list span{color:#cbd5e1;font-size:0.8rem;font-weight:500;}
+  .tools-list span::before{content:"· ";color:var(--blue);}
+
+  /* SECTIONS */
+  section{padding:80px 5%;}
+  .section-tag{font-size:0.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .section-title{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:0.7rem;}
+  .section-sub{font-size:0.95rem;color:var(--mid);max-width:560px;line-height:1.75;margin-bottom:3rem;}
+
+  /* FEATURED */
+  .featured-study{background:var(--dark);border-radius:16px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:2.5rem;}
+  @media(max-width:700px){.featured-study{grid-template-columns:1fr;gap:2rem;}}
+  .featured-thumb{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:12px;min-height:240px;display:flex;flex-direction:column;gap:0.75rem;align-items:center;justify-content:center;font-size:4rem;border:1px solid #334155;padding:0.75rem;overflow:hidden;}
+  .featured-thumb img{width:100%;border-radius:8px;display:block;box-shadow:0 8px 24px rgba(0,0,0,0.35);transition:transform 0.4s ease;}
+  .featured-thumb:hover img{transform:scale(1.03);}
+  .featured-label{font-size:0.72rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.6rem;}
+  .featured-study h3{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:0.8rem;line-height:1.3;}
+  .featured-study p{font-size:0.9rem;color:#94a3b8;line-height:1.75;margin-bottom:1.2rem;}
+  .featured-tags{display:flex;gap:0.45rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+  .featured-tag{font-size:0.7rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:20px;background:#1e293b;color:#93c5fd;border:1px solid #334155;}
+  .process-steps{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+  .pstep{font-size:0.72rem;font-weight:600;padding:0.22rem 0.6rem;border-radius:20px;color:#fff;}
+  .p-research{background:#7c3aed;}
+  .p-design{background:#0891b2;}
+  .p-dev{background:#059669;}
+  .p-result{background:#ea580c;}
+  .featured-result{font-size:0.85rem;color:#4ade80;font-weight:700;margin-bottom:1.4rem;}
+  .featured-links{display:flex;gap:1rem;flex-wrap:wrap;}
+  .featured-link{font-size:0.83rem;color:#93c5fd;font-weight:600;text-decoration:none;border:1px solid #334155;padding:0.4rem 0.85rem;border-radius:6px;transition:all 0.2s;}
+  .featured-link:hover{background:#1e293b;border-color:#93c5fd;}
+
+  /* GAP FIXES */
+  .gap-fixes{background:var(--light);border-radius:12px;padding:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem;border:1px solid var(--border);}
+  .gap-fix{display:flex;align-items:flex-start;gap:0.6rem;}
+  .gap-check{font-size:1rem;flex-shrink:0;margin-top:0.1rem;}
+  .gap-fix-text{font-size:0.82rem;color:var(--mid);line-height:1.55;}
+  .gap-fix-text strong{color:var(--dark);display:block;margin-bottom:0.15rem;}
+
+  /* CARDS */
+  #work{background:var(--light);}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;}
+  .project-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;transition:box-shadow 0.3s;will-change:transform;}
+  .project-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;}
+  .t-blue{background:linear-gradient(135deg,#EBF4FF,#c3d9f8);}
+  .t-teal{background:linear-gradient(135deg,#ecfeff,#a5f3fc);}
+  .t-green{background:linear-gradient(135deg,#ecfdf5,#a7f3d0);}
+  .t-purple{background:linear-gradient(135deg,#f5f3ff,#ddd6fe);}
+  .t-amber{background:linear-gradient(135deg,#fffbeb,#fde68a);}
+  .t-red{background:linear-gradient(135deg,#fff1f2,#fecdd3);}
+  .project-body{padding:1.4rem;}
+  .project-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.5rem;}
+  .tag{font-size:0.7rem;font-weight:600;padding:0.18rem 0.55rem;border-radius:20px;background:var(--accent);color:var(--blue);}
+  .tag-teal{background:#ecfeff;color:var(--teal);}
+  .tag-green{background:#ecfdf5;color:var(--green);}
+  .tag-orange{background:#fff7ed;color:var(--orange);}
+  .tag-purple{background:#f5f3ff;color:#7c3aed;}
+  .project-process{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.6rem;}
+  .project-body h3{font-size:0.97rem;font-weight:700;color:var(--dark);margin-bottom:0.4rem;}
+  .project-body p{font-size:0.85rem;color:var(--mid);line-height:1.65;margin-bottom:0.7rem;}
+  .project-research{font-size:0.78rem;color:#7c3aed;font-weight:600;margin-bottom:0.5rem;font-style:italic;}
+  .project-result{font-size:0.82rem;font-weight:700;color:var(--green);margin-bottom:0.7rem;}
+  .project-link{font-size:0.82rem;color:var(--blue);font-weight:600;text-decoration:none;}
+  .project-link:hover{text-decoration:underline;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+  @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:2rem;}}
+  .about-text p{color:var(--mid);line-height:1.8;margin-bottom:1rem;font-size:0.93rem;}
+  .skills-group{margin-bottom:1.4rem;}
+  .skills-group-label{font-size:0.74rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;}
+  .skills-pills{display:flex;flex-wrap:wrap;gap:0.45rem;}
+  .pill{font-size:0.8rem;padding:0.28rem 0.7rem;border-radius:20px;background:var(--light);border:1px solid var(--border);color:var(--dark);font-weight:500;}
+
+  /* EXPERIENCE */
+  #experience{background:var(--light);}
+  .exp-list{border-left:2px solid var(--border);padding-left:2rem;margin-left:0.5rem;}
+  .exp-item{position:relative;padding-bottom:2.5rem;}
+  .exp-item::before{content:"";position:absolute;left:-2.6rem;top:0.3rem;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue);}
+  .exp-item.current::before{background:var(--green);box-shadow:0 0 0 2px var(--green);}
+  .exp-date{font-size:0.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.2rem;}
+  .exp-date.current-date{color:var(--green);}
+  .exp-role{font-size:1rem;font-weight:700;color:var(--dark);}
+  .exp-company{font-size:0.87rem;color:var(--mid);margin-bottom:0.7rem;}
+  .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+  .exp-bullets li{font-size:0.86rem;color:var(--mid);padding-left:1rem;position:relative;line-height:1.65;}
+  .exp-bullets li::before{content:"→";position:absolute;left:0;color:var(--blue);font-size:0.78rem;top:1px;}
+  .exp-metric{background:var(--accent);color:var(--blue);font-weight:700;border-radius:3px;padding:0 3px;}
+
+  /* DESIGN SYSTEM CALLOUT */
+  .ds-callout{background:linear-gradient(135deg,var(--accent),#f0f4ff);border:1px solid #c3d9f8;border-radius:12px;padding:1.5rem;margin-top:2rem;}
+  .ds-callout h4{font-size:0.9rem;font-weight:700;color:var(--blue);margin-bottom:0.5rem;}
+  .ds-callout p{font-size:0.83rem;color:var(--mid);line-height:1.65;}
+
+  /* EMAIL STRIP */
+  .email-strip{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.8rem;margin-top:1rem;}
+  .email-strip h4{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.5rem;}
+  .email-strip p{font-size:0.85rem;color:var(--mid);line-height:1.7;}
+  .email-metrics{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap;}
+  .email-metric-num{font-size:1.4rem;font-weight:800;color:var(--blue);}
+  .email-metric-label{font-size:0.72rem;color:var(--mid);}
+
+  /* EDUCATION */
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+  .edu-card{border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;background:#fff;}
+  .edu-card.completed{border-left:3px solid var(--green);}
+  .edu-card.inprogress{border-left:3px solid var(--blue);}
+  .edu-status{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;}
+  .status-done{color:var(--green);}
+  .status-wip{color:var(--blue);}
+  .edu-degree{font-size:0.97rem;font-weight:700;color:var(--dark);margin-bottom:0.2rem;}
+  .edu-school{font-size:0.85rem;color:var(--mid);}
+  .edu-year{font-size:0.8rem;color:var(--mid);margin-top:0.3rem;}
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.9rem;margin-top:2rem;}
+  .cert-card{border:1px solid var(--border);border-radius:8px;padding:1rem;background:var(--light);display:flex;gap:0.75rem;align-items:flex-start;}
+  .cert-icon{font-size:1.4rem;flex-shrink:0;}
+  .cert-name{font-size:0.85rem;font-weight:700;color:var(--dark);}
+  .cert-issuer{font-size:0.76rem;color:var(--mid);}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+  @media(max-width:700px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-cta h2{font-size:1.75rem;font-weight:800;color:var(--dark);margin-bottom:1rem;}
+  .contact-cta p{color:var(--mid);line-height:1.7;margin-bottom:1.5rem;font-size:0.95rem;}
+  .contact-links{display:flex;flex-direction:column;gap:0.9rem;}
+  .contact-link{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;border-radius:var(--radius);border:1px solid var(--border);text-decoration:none;color:var(--dark);font-weight:600;font-size:0.92rem;transition:all 0.2s;}
+  .contact-link:hover{border-color:var(--blue);background:var(--accent);color:var(--blue);}
+  .contact-icon{font-size:1.2rem;}
+  .contact-detail{font-size:0.78rem;color:var(--mid);font-weight:400;}
+
+  footer{background:var(--dark);color:#94a3b8;text-align:center;padding:2rem 5%;font-size:0.82rem;}
+  footer span{color:var(--blue);font-weight:600;}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="cursor-glow" id="cursor-glow"></div>
+
+<nav>
+  <a class="nav-logo" href="#">Benjamin<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#email-design">Email</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Credentials</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-badge">Open to Remote &mdash; Full-time &amp; Contract</div>
+    <h1>Digital Strategist.<br>Designer who <span>ships in code.</span></h1>
+    <p class="hero-sub">9+ years delivering UI/UX, editorial design, data strategy, and full-stack development. Published designer for national NGO magazines. Google-certified Campaign Manager 360 &amp; HubSpot SEO-certified. Figma to React &mdash; no handoff friction.</p>
+    <div class="hero-metrics">
+      <div class="metric"><div class="metric-num" data-count="85" data-suffix="%">85%</div><div class="metric-label">SEO discoverability boost</div></div>
+      <div class="metric"><div class="metric-num" data-count="73" data-suffix="%">73%</div><div class="metric-label">Social reach growth</div></div>
+      <div class="metric"><div class="metric-num" data-count="5" data-suffix="+">5+</div><div class="metric-label">Shipped products</div></div>
+      <div class="metric"><div class="metric-num" data-count="9" data-suffix="+">9+</div><div class="metric-label">Years experience</div></div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#work" class="btn-primary">View Case Studies</a>
+      <a href="https://dribbble.com/BenjaminAjah" target="_blank" class="btn-secondary">Dribbble Portfolio &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<div class="proof-bar">
+  <div class="proof-item"><span class="proof-icon">&#128202;</span><span class="proof-text"><strong>Google Certified</strong> Campaign Manager 360 &mdash; Active 2027</span></div>
+  <div class="proof-item"><span class="proof-icon">&#128269;</span><span class="proof-text"><strong>HubSpot SEO</strong> Certified &mdash; Active 2026</span></div>
+  <div class="proof-item"><span class="proof-icon">&#128241;</span><span class="proof-text"><strong>Full fintech product</strong> shipped &mdash; mobile + web</span></div>
+  <div class="proof-item"><span class="proof-icon">&#128228;</span><span class="proof-text"><strong>Email campaigns</strong> &mdash; 1,000+ subscribers &middot; Mailchimp &middot; 3 orgs</span></div>
+  <div class="proof-item"><span class="proof-icon">&#127912;</span><span class="proof-text"><strong>Design system</strong> &mdash; 200+ asset Figma library shipped</span></div>
+</div>
+
+<div class="tools-strip">
+  <span class="tools-label">Core Stack</span>
+  <div class="tools-list">
+    <span>Figma</span><span>Adobe Creative Suite</span><span>Tableau</span><span>React / Next.js</span>
+    <span>Node.js</span><span>WordPress</span><span>SPSS</span><span>Ahrefs</span>
+    <span>Mailchimp</span><span>MERN Stack</span><span>Google Campaign Manager 360</span>
+  </div>
+</div>
+
+<section id="work">
+  <div class="section-tag">Selected Work</div>
+  <div class="section-title">Case Studies</div>
+  <p class="section-sub">Research &rarr; Design &rarr; Ship &rarr; Measure. Every project below shows the full loop.</p>
+
+  <div class="featured-study">
+    <div class="featured-thumb">
+      <img src="rechargepro-app.png" alt="RechargePro fintech mobile app screens — dark and light mode UI for airtime, bill payments and agent onboarding" loading="lazy">
+    </div>
+    <div>
+      <div class="featured-label">&#11088; Featured Project &mdash; Full Product Design</div>
+      <h3>RechargePro &mdash; Fintech Mobile App &amp; Landing Page</h3>
+      <p>Designed the full UI/UX for RechargePro, a fintech utility-payment product (airtime, bill payments, agent onboarding). Delivered the mobile app (iOS dark + light mode), full web landing page, and marketing assets. Available on Google Play, App Store, and Microsoft Store.</p>
+      <div class="process-steps">
+        <span class="pstep p-research">&#128203; User Research</span>
+        <span class="pstep p-design">&#127912; Wireframes &rarr; Figma</span>
+        <span class="pstep p-dev">&#128187; Prototype + Handoff</span>
+        <span class="pstep p-result">&#128200; Live on 3 stores</span>
+      </div>
+      <div class="featured-tags">
+        <span class="featured-tag">UI/UX Design</span><span class="featured-tag">Fintech</span>
+        <span class="featured-tag">Mobile App</span><span class="featured-tag">Landing Page</span>
+        <span class="featured-tag">Figma</span><span class="featured-tag">Adobe CC</span>
+        <span class="featured-tag">Dark Mode</span><span class="featured-tag">Payment UX</span>
+      </div>
+      <div class="featured-result">&#9989; Multi-screen mobile app + responsive landing page &middot; Live on Google Play &amp; App Store</div>
+      <div class="featured-links">
+        <a href="https://dribbble.com/BenjaminAjah" target="_blank" class="featured-link">Dribbble &rarr;</a>
+        <a href="https://www.behance.net/benjaminajah" target="_blank" class="featured-link">Behance &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb t-teal">&#128202;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag tag-teal">Digital Strategy</span><span class="tag tag-teal">SEO</span><span class="tag tag-teal">Tableau</span></div>
+        <div class="project-process"><span class="pstep p-research">Ahrefs Audit</span><span class="pstep p-design">SEO Plan</span><span class="pstep p-result">85% &uarr;</span></div>
+        <h3>CJID &mdash; Digital &amp; Data Strategy (2023&ndash;Present)</h3>
+        <div class="project-research">&#128300; Ahrefs site audit &middot; competitor keyword gap &middot; GSC crawl review &middot; backlink profile</div>
+        <p>Built 2-year digital strategy, executed full SEO overhaul, revived abandoned Tableau dashboard for Nigerian citizens. Drafted privacy policy from scratch.</p>
+        <div class="project-result">&uarr; 85% SEO discoverability &middot; Tableau dashboard live &middot; Legal risk eliminated</div>
+        <a href="https://github.com/the-anointed-one" class="project-link" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb t-amber">&#128379;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag">Data Viz</span><span class="tag">Tableau</span><span class="tag">Mailchimp</span></div>
+        <div class="project-process"><span class="pstep p-research">Data Collation</span><span class="pstep p-design">Tableau</span><span class="pstep p-result">75% &darr;</span></div>
+        <h3>CDD &mdash; Election Data Viz &amp; Campaigns (2022&ndash;2023)</h3>
+        <div class="project-research">&#128300; Raw election dataset collation &middot; narrative mapping &middot; insight extraction</div>
+        <p>Visualised Nigerian election data via Tableau. Managed 1,000+ subscriber Mailchimp list across election updates, donor newsletters, press releases, and event invites.</p>
+        <div class="project-result">&darr; 75% reporting time &middot; 1,000+ subscribers managed &middot; National election insights</div>
+        <a href="https://dribbble.com/BenjaminAjah" class="project-link" target="_blank">Dribbble &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb t-blue">&#127891;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag">Content Strategy</span><span class="tag">Figma</span><span class="tag tag-purple">Design System</span></div>
+        <div class="project-process"><span class="pstep p-research">Brand Audit</span><span class="pstep p-design">Component Library</span><span class="pstep p-result">200+ Assets</span></div>
+        <h3>Apsley &mdash; Design System &amp; Content (2022&ndash;Present)</h3>
+        <div class="project-research">&#128300; Brand audit &middot; competitor benchmarking &middot; editorial workflow analysis</div>
+        <p>Built a 200+ asset Figma component library. Grew reach 73% and cut content production time 85%.</p>
+        <div class="project-result">&uarr; 73% reach &middot; &darr; 85% production time &middot; 100% brand compliance</div>
+        <a href="https://dribbble.com/BenjaminAjah" class="project-link" target="_blank">Dribbble &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb t-green">&#128208;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag tag-green">Brand Identity</span><span class="tag tag-green">Adobe CC</span><span class="tag tag-green">Figma</span></div>
+        <div class="project-process"><span class="pstep p-research">Brand Discovery</span><span class="pstep p-design">Identity System</span><span class="pstep p-result">0 Revisions</span></div>
+        <h3>Bemazies &mdash; Brand Identity &amp; UI/UX (2021&ndash;2023)</h3>
+        <div class="project-research">&#128300; Cognitive load principles applied to IELTS study material design</div>
+        <p>Led full brand visual identity redesign. Zero revision cycles. Earned 15% salary increase in 60 days.</p>
+        <div class="project-result">15% pay increase in 60 days &middot; Zero revision cycles &middot; Live brand system</div>
+        <a href="https://dribbble.com/BenjaminAjah" class="project-link" target="_blank">Dribbble &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb t-green">&#128240;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag tag-green">Editorial</span><span class="tag tag-green">Adobe CC</span><span class="tag tag-green">Mailchimp</span></div>
+        <div class="project-process"><span class="pstep p-research">Policy Research</span><span class="pstep p-design">Magazine Layout</span><span class="pstep p-result">National Print</span></div>
+        <h3>Yiaga Africa &mdash; Publications &amp; Email (2017&ndash;2022)</h3>
+        <div class="project-research">&#128300; Policy brief translation &mdash; governance data designed for general-audience readability</div>
+        <p>Art-directed The Convergence Vol. 1 (400 youth candidates), designed FixElectionNG Policy Brief, produced 60+ monthly newsletter editions. Managed Mailchimp campaigns.</p>
+        <div class="project-result">3 named national publications &middot; 60+ email editions &middot; Photo archive built</div>
+        <a href="https://www.behance.net/benjaminajah" class="project-link" target="_blank">Behance &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb t-amber">&#128203;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag">Infographic</span><span class="tag">Adobe CC</span><span class="tag tag-orange">Institutional</span></div>
+        <div class="project-process"><span class="pstep p-research">Pension Data</span><span class="pstep p-design">Infographic Layout</span><span class="pstep p-result">National Audience</span></div>
+        <h3>Techherng &times; PENCOM &mdash; Newsletter (2016&ndash;2020)</h3>
+        <div class="project-research">&#128300; Pension data interpretation for public-facing institutional communications</div>
+        <p>Lead designer on Nigeria's National Pension Commission infographic newsletter. Promoted to Senior Graphic Designer for sustained output quality over 4 years.</p>
+        <div class="project-result">Promoted to Senior GD &middot; National publication &middot; 4-year delivery streak</div>
+        <a href="https://www.behance.net/benjaminajah" class="project-link" target="_blank">Behance &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb t-purple">&#9992;&#65039;</div>
+      <div class="project-body">
+        <div class="project-tags"><span class="tag tag-purple">2D Animation</span><span class="tag tag-purple">After Effects</span><span class="tag tag-purple">Workflow</span></div>
+        <div class="project-process"><span class="pstep p-research">Process Audit</span><span class="pstep p-dev">Workflow System</span><span class="pstep p-result">83% &darr;</span></div>
+        <h3>Gupa Travel &mdash; Animation &amp; Workflow (2017&ndash;2022)</h3>
+        <div class="project-research">&#128300; Process mapping of untracked email intake before workflow redesign</div>
+        <p>Co-built task management system reducing delivery time 83%. 2D animated product launch in After Effects. Led CorelDraw &rarr; Adobe CC studio migration.</p>
+        <div class="project-result">&darr; 83% delivery time &middot; &darr; 40% turnaround &middot; Animation live on launch day</div>
+        <a href="https://github.com/the-anointed-one" class="project-link" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-callout">
+    <h4>&#127912; Design System Work &mdash; Figma Component Library (Apsley Business School)</h4>
+    <p>Built from scratch: 200+ assets covering typography scales, button variants, card templates, social post frames, newsletter layouts, and icon sets &mdash; all brand-locked and publish-ready without designer review. This is the system that cut production time 85% and held zero compliance incidents over 3 years.</p>
+  </div>
+</section>
+
+<section id="email-design">
+  <div class="section-tag">Email Design &amp; Campaigns</div>
+  <div class="section-title">Email Design History</div>
+  <p class="section-sub">Template design, campaign management, and editorial email production across three organisations.</p>
+  <div class="email-strip">
+    <h4>&#128231; Yiaga Africa &mdash; Monthly Constituency Newsletter (2017&ndash;2022)</h4>
+    <p>Designed each edition from layout to print-ready export: news, motions/bills, spotlight, photography. Distributed via Mailchimp to NGO stakeholders and legislators.</p>
+    <div class="email-metrics">
+      <div><div class="email-metric-num">60+</div><div class="email-metric-label">Editions produced</div></div>
+      <div><div class="email-metric-num">4</div><div class="email-metric-label">Sections per edition</div></div>
+      <div><div class="email-metric-num">5yr</div><div class="email-metric-label">Sustained delivery</div></div>
+    </div>
+  </div>
+  <div class="email-strip">
+    <h4>&#128231; CDD &mdash; Campaign Email Management (2022&ndash;2023)</h4>
+    <p>Managed Mailchimp campaigns to a 1,000+ subscriber list across four types: election updates, donor newsletters, press releases, and event invites.</p>
+    <div class="email-metrics">
+      <div><div class="email-metric-num">1,000+</div><div class="email-metric-label">Subscribers managed</div></div>
+      <div><div class="email-metric-num">4</div><div class="email-metric-label">Campaign types</div></div>
+      <div><div class="email-metric-num">Mailchimp</div><div class="email-metric-label">Platform</div></div>
+    </div>
+  </div>
+  <div class="email-strip">
+    <h4>&#128231; Apsley Business School &mdash; Institutional Email Templates (2022&ndash;Present)</h4>
+    <p>Designed Mailchimp-compatible HTML email templates: course promotion, student comms, and news digests. Part of the design system that grew social reach 73%.</p>
+    <div class="email-metrics">
+      <div><div class="email-metric-num">3+</div><div class="email-metric-label">Template types</div></div>
+      <div><div class="email-metric-num">100%</div><div class="email-metric-label">Brand compliance</div></div>
+      <div><div class="email-metric-num">3yr</div><div class="email-metric-label">In use</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-tag">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-title">Strategist, Designer,<br>Developer &mdash; in that order.</div>
+      <p>I start with research: audits, user interviews, data collation, competitive analysis. Then I design &mdash; Figma component libraries, editorial systems, full-product UI. Then I ship it: React, WordPress, Tableau, or print-ready PDF. End-to-end ownership means no handoff gaps and outcomes you can measure.</p>
+      <p>I've designed published national magazines (Yiaga Africa, PENCOM), built fintech app UIs (RechargePro), managed Mailchimp campaigns to 1,000+ subscribers, shipped Tableau dashboards for Nigerian civic data, and written privacy policies that protect institutions.</p>
+      <p>Google Campaign Manager 360 certified (2027). HubSpot SEO certified (2026). Based in Abuja &mdash; available immediately for remote full-time or contract roles worldwide.</p>
+      <br>
+      <a href="mailto:ajahbenz@gmail.com" class="btn-primary">Work With Me</a>
+    </div>
+    <div>
+      <div class="skills-group">
+        <div class="skills-group-label">Digital Marketing &amp; Ads</div>
+        <div class="skills-pills">
+          <span class="pill">Google Campaign Manager 360</span><span class="pill">SEO (Ahrefs &middot; HubSpot)</span>
+          <span class="pill">Google Search Console</span><span class="pill">Mailchimp</span>
+          <span class="pill">Content Strategy</span><span class="pill">Digital Strategy</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Design &amp; Design Systems</div>
+        <div class="skills-pills">
+          <span class="pill">Figma</span><span class="pill">Adobe Creative Suite</span>
+          <span class="pill">Component Libraries</span><span class="pill">Brand Identity</span>
+          <span class="pill">Wireframing</span><span class="pill">Prototyping</span>
+          <span class="pill">User Research</span><span class="pill">Usability Testing</span>
+          <span class="pill">Editorial / Magazine Design</span><span class="pill">2D Animation</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Data &amp; Analytics</div>
+        <div class="skills-pills">
+          <span class="pill">Tableau</span><span class="pill">SPSS</span>
+          <span class="pill">Data Visualisation</span><span class="pill">Data Analysis</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">Development</div>
+        <div class="skills-pills">
+          <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">React Native</span>
+          <span class="pill">Node.js</span><span class="pill">TypeScript</span>
+          <span class="pill">MERN Stack</span><span class="pill">WordPress</span>
+          <span class="pill">Sanity CMS</span><span class="pill">PHP</span><span class="pill">Web3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:3rem;">
+    <div class="section-tag">Evidence On Record</div>
+    <div class="section-title" style="margin-bottom:1.5rem;">What the work proves</div>
+    <div class="gap-fixes">
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Portfolio Links</strong>dribbble.com/BenjaminAjah &middot; behance.net/benjaminajah &middot; benjaminajah.github.io</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Case Studies with Process</strong>Research &rarr; Wireframe &rarr; Ship &rarr; Metrics on every project</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Social Metrics</strong>73% reach growth (Apsley), 85% SEO lift (CJID)</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Live Product Demos</strong>RechargePro on Google Play &amp; App Store &middot; Tableau dashboard live</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Research Proof</strong>Ahrefs audit, data collation, cognitive load research noted per project</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Email Design</strong>3 orgs &middot; 60+ editions &middot; 1,000+ subscribers managed &middot; Mailchimp</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Dev Output Measured</strong>Tableau dashboard revived &middot; RechargePro shipped &middot; GitHub linked</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Design System</strong>200+ asset Figma library &mdash; components, templates, typography, icons</div></div>
+      <div class="gap-fix"><span class="gap-check">&#9989;</span><div class="gap-fix-text"><strong>Paid Ads</strong>Google Campaign Manager 360 &mdash; Active, expires Jun 2027</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-tag">Experience</div>
+  <div class="section-title">Where I've Worked</div>
+  <p class="section-sub">7 roles, 9 years. Numbers first, always.</p>
+  <div class="exp-list">
+    <div class="exp-item current">
+      <div class="exp-date current-date">Jul 2023 &ndash; Present &middot; Current Role</div>
+      <div class="exp-role">Digital &amp; Data Strategy Manager</div>
+      <div class="exp-company">Centre for Journalism Innovation and Development (CJID) &middot; Abuja, Nigeria</div>
+      <ul class="exp-bullets">
+        <li>Improved SEO discoverability by <span class="exp-metric">85%</span> via Ahrefs audit, link building, skyscraper strategy, and Google Search Console indexing. Backed by active HubSpot SEO Certification.</li>
+        <li>Built a 2-year digital engagement strategy, bringing editorial structure to all online channels.</li>
+        <li>Revitalised abandoned <span class="exp-metric">Tableau</span> dashboard tracking federal budget allocations per state &mdash; boosting civic accountability.</li>
+        <li>Drafted department privacy policy from scratch, eliminating legal exposure from data breaches.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Sep 2022 &ndash; Jul 2023</div>
+      <div class="exp-role">Data Visualisation / Graphic Designer</div>
+      <div class="exp-company">Centre for Democracy &amp; Development (CDD) &middot; Abuja, Nigeria</div>
+      <ul class="exp-bullets">
+        <li>Managed <span class="exp-metric">Mailchimp</span> campaigns to a <span class="exp-metric">1,000+ subscriber list</span> &mdash; election updates, donor newsletters, press releases, and event invites.</li>
+        <li>Visualised election data via Tableau for national-audience storytelling on Nigerian democratic processes.</li>
+        <li>Reduced weekly reporting time by <span class="exp-metric">75%</span> with a self-assessment template adopted across the team.</li>
+      </ul>
+    </div>
+    <div class="exp-item current">
+      <div class="exp-date current-date">Apr 2022 &ndash; Present &middot; Part-time Contract &middot; Concurrent</div>
+      <div class="exp-role">Content Strategist &amp; UX Content Designer</div>
+      <div class="exp-company">Apsley Business School London &middot; Remote</div>
+      <ul class="exp-bullets">
+        <li>Grew organic social reach by <span class="exp-metric">73%</span> by redesigning editorial workflow and building a 200+ asset Figma component library.</li>
+        <li>Cut content production time by <span class="exp-metric">85%</span> via a scalable content system tied to institutional marketing goals.</li>
+        <li>Maintained <span class="exp-metric">100% brand compliance</span> across 200+ assets over 3 years &mdash; zero editorial incidents.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Dec 2021 &ndash; Sep 2023 &middot; Contract</div>
+      <div class="exp-role">Communication Designer</div>
+      <div class="exp-company">Bemazies Consult &middot; Remote</div>
+      <ul class="exp-bullets">
+        <li>Led full brand visual identity redesign in Figma + Adobe CC &mdash; cohesive UI/UX across all digital touchpoints.</li>
+        <li>Applied cognitive load research to IELTS study materials, measurably improving client pass rates.</li>
+        <li>Earned <span class="exp-metric">15% salary increase within 60 days</span> for delivering publication-ready designs with zero revision cycles.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">2017 &ndash; 2022 &middot; Part-time &middot; Concurrent</div>
+      <div class="exp-role">Assistant Innovation Officer</div>
+      <div class="exp-company">Yiaga Africa &middot; Nigeria</div>
+      <ul class="exp-bullets">
+        <li>Art-directed <em>The Convergence Vol. 1</em> (Dec 2018) &mdash; Nigeria's largest youth political summit magazine (400 candidates, 91 parties, 30 speakers).</li>
+        <li>Designed <em>FixElectionNG Policy Brief</em> (Sep 2020) &mdash; nationally distributed electoral reform publication.</li>
+        <li>Produced monthly constituency newsletter &mdash; 60+ editions, consistent editorial grid, print-ready export.</li>
+        <li>Managed <span class="exp-metric">Mailchimp</span> email campaigns to NGO stakeholders &mdash; scheduling, delivery, and reporting.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">2016 &ndash; 2020 &middot; Full-time</div>
+      <div class="exp-role">Senior Graphic Designer (promoted from Graphic Designer)</div>
+      <div class="exp-company">Techherng &middot; Nigeria</div>
+      <ul class="exp-bullets">
+        <li>Lead designer on <span class="exp-metric">PENCOM</span> (National Pension Commission) infographic newsletter &mdash; delivered on schedule every cycle for 4 years.</li>
+        <li>Produced research report designs for institutional clients using infographic layout and typographic hierarchy.</li>
+        <li>Promoted to Senior Graphic Designer for sustained quality across all deliverables.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Apr 2017 &ndash; Jun 2022 &middot; Concurrent &middot; Contract</div>
+      <div class="exp-role">Animator &amp; Communications Designer</div>
+      <div class="exp-company">Gupa Travel Network &middot; Maitama, Abuja</div>
+      <ul class="exp-bullets">
+        <li>Reduced task delivery time by <span class="exp-metric">83%</span> by co-building a structured workflow system replacing untracked email intake.</li>
+        <li>Reduced design turnaround by ~<span class="exp-metric">40%</span> by leading studio migration from CorelDraw to Adobe CC.</li>
+        <li>Produced 2D animated product launch campaign in After Effects &mdash; delivered on time for live debut.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-tag">Education &amp; Certifications</div>
+  <div class="section-title">Credentials</div>
+  <p class="section-sub">Formal qualifications and active professional certifications.</p>
+  <div class="edu-grid">
+    <div class="edu-card completed">
+      <div class="edu-status status-done">&#10003; Completed</div>
+      <div class="edu-degree">Associate Degree (HND) &mdash; Data Science &amp; Business Analytics</div>
+      <div class="edu-school">Apsley Business School London</div>
+      <div class="edu-year">2022 &ndash; 2023 &middot; London, England</div>
+    </div>
+    <div class="edu-card inprogress">
+      <div class="edu-status status-wip">In Progress</div>
+      <div class="edu-degree">B.Sc. Maths &amp; Computer Science</div>
+      <div class="edu-school">National Open University of Nigeria</div>
+      <div class="edu-year">2018 &ndash; Present &middot; Wuse2, Abuja</div>
+    </div>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card" style="border-left:3px solid #2F855A;">
+      <div class="cert-icon">&#128202;</div>
+      <div><div class="cert-name">Campaign Manager 360 Certification</div><div class="cert-issuer">Google Skillshop &middot; Jun 2026 &middot; <strong style="color:#2F855A;">Active &mdash; Expires Jun 2027</strong></div></div>
+    </div>
+    <div class="cert-card" style="border-left:3px solid #2F855A;">
+      <div class="cert-icon">&#128269;</div>
+      <div><div class="cert-name">SEO Certification</div><div class="cert-issuer">HubSpot Academy &middot; Sep 2025 &middot; <strong style="color:#2F855A;">Active &mdash; Expires Oct 2026</strong></div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#127760;</div>
+      <div><div class="cert-name">Introduction to Data Science</div><div class="cert-issuer">Cisco &middot; Jun 2023</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#129514;</div>
+      <div><div class="cert-name">Postman Student Expert</div><div class="cert-issuer">Postman &middot; Apr 2021</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#128187;</div>
+      <div><div class="cert-name">The Web Developer Bootcamp 2021</div><div class="cert-issuer">Udemy &middot; May 2021 &middot; React.js, JavaScript</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#127912;</div>
+      <div><div class="cert-name">Graphic Design Bootcamp</div><div class="cert-issuer">Udemy &middot; Mar 2017</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-cta">
+      <div class="section-tag">Contact</div>
+      <h2>Let's build something worth showing.</h2>
+      <p>Open to remote full-time roles in digital strategy, UI/UX design, data visualisation, or web development. Google Campaign Manager 360 certified. Available immediately.</p>
+      <a href="mailto:ajahbenz@gmail.com" class="btn-primary">Send Me an Email</a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:ajahbenz@gmail.com" class="contact-link"><span class="contact-icon">&#9993;&#65039;</span><div><div>Email</div><div class="contact-detail">ajahbenz@gmail.com</div></div></a>
+      <a href="https://www.linkedin.com/in/benjamin-ajah-202989110/" target="_blank" class="contact-link"><span class="contact-icon">&#128188;</span><div><div>LinkedIn</div><div class="contact-detail">benjamin-ajah-202989110</div></div></a>
+      <a href="https://dribbble.com/BenjaminAjah" target="_blank" class="contact-link"><span class="contact-icon">&#127912;</span><div><div>Dribbble</div><div class="contact-detail">dribbble.com/BenjaminAjah</div></div></a>
+      <a href="https://www.behance.net/benjaminajah" target="_blank" class="contact-link"><span class="contact-icon">&#128444;&#65039;</span><div><div>Behance</div><div class="contact-detail">behance.net/benjaminajah</div></div></a>
+      <a href="https://github.com/the-anointed-one" target="_blank" class="contact-link"><span class="contact-icon">&#128024;</span><div><div>GitHub</div><div class="contact-detail">github.com/the-anointed-one</div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 <span>Benjamin Ajah</span> &mdash; Digital Strategist &middot; UI/UX Designer &middot; Full-Stack Developer &middot; Built by me.</p>
+</footer>
+
+<!-- THREE.JS + GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── ENVIRONMENT FLAGS ── */
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const IS_MOBILE = window.matchMedia('(max-width: 700px)').matches;
+
+/* ── SCROLL PROGRESS BAR ── */
+const progressEl = document.getElementById('scroll-progress');
+gsap.to(progressEl, {
+  scaleX: 1, ease: 'none',
+  scrollTrigger: { start: 0, end: 'max', scrub: 0.3 }
+});
+
+/* ── CURSOR GLOW ── */
+const glowEl = document.getElementById('cursor-glow');
+if (!REDUCED && !IS_MOBILE) {
+  window.addEventListener('mousemove', (e) => {
+    gsap.to(glowEl, { x: e.clientX, y: e.clientY, duration: 0.7, ease: 'power2.out' });
+  });
+} else {
+  glowEl.style.display = 'none';
+}
+
+/* ── THREE.JS HERO ── */
+(function() {
+  const canvas  = document.getElementById('hero-canvas');
+  const hero    = document.querySelector('.hero');
+  if (!window.THREE) { return; }
+  if (REDUCED) {
+    // Render one static frame only — no motion for users who opt out.
+    canvas.style.opacity = '0.5';
+  }
+  let W = hero.offsetWidth, H = hero.offsetHeight;
+
+  const scene    = new THREE.Scene();
+  const camera   = new THREE.PerspectiveCamera(60, W / H, 0.1, 2000);
+  camera.position.z = 500;
+  const baseCamZ = 500;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  /* -- PARTICLES (fewer on mobile for perf) -- */
+  const COUNT = IS_MOBILE ? 60 : 130;
+  const positions  = new Float32Array(COUNT * 3);
+  const velocities = [];
+  const SPREAD = 700;
+
+  for (let i = 0; i < COUNT; i++) {
+    positions[i*3]   = (Math.random() - 0.5) * SPREAD;
+    positions[i*3+1] = (Math.random() - 0.5) * SPREAD;
+    positions[i*3+2] = (Math.random() - 0.5) * 300;
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.35,
+      y: (Math.random() - 0.5) * 0.35
+    });
+  }
+
+  const ptGeo = new THREE.BufferGeometry();
+  ptGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const ptMat = new THREE.PointsMaterial({ color: 0x1A56DB, size: 3.5, transparent: true, opacity: 0.65 });
+  const points = new THREE.Points(ptGeo, ptMat);
+  scene.add(points);
+
+  /* -- CONNECTION LINES -- */
+  const lineGeo  = new THREE.BufferGeometry();
+  const lineMat  = new THREE.LineBasicMaterial({ color: 0x1A56DB, transparent: true, opacity: 0.12 });
+  const lineSegs = new THREE.LineSegments(lineGeo, lineMat);
+  scene.add(lineSegs);
+  const LINK_DIST = 90;
+
+  /* -- ABSTRACT WIREFRAME OBJECT (torusknot) -- */
+  const tkGeo  = new THREE.TorusKnotGeometry(80, 22, 120, 16);
+  const tkMat  = new THREE.MeshBasicMaterial({ color: 0x1A56DB, wireframe: true, transparent: true, opacity: 0.13 });
+  const torus  = new THREE.Mesh(tkGeo, tkMat);
+  torus.position.set(200, 0, -100);
+  scene.add(torus);
+
+  /* -- SECOND GEOMETRIC ACCENT (icosahedron) -- */
+  const icoGeo = new THREE.IcosahedronGeometry(55, 1);
+  const icoMat = new THREE.MeshBasicMaterial({ color: 0x0891B2, wireframe: true, transparent: true, opacity: 0.18 });
+  const ico    = new THREE.Mesh(icoGeo, icoMat);
+  ico.position.set(-240, 120, -50);
+  scene.add(ico);
+
+  /* -- MOUSE -- */
+  let mx = 0, my = 0;          // parallax offset
+  let cursorWX = 1e6, cursorWY = 1e6;  // cursor in scene-ish coords (offscreen by default)
+  window.addEventListener('mousemove', (e) => {
+    mx = (e.clientX / window.innerWidth  - 0.5) * 150;
+    my = (e.clientY / window.innerHeight - 0.5) * 150;
+    // Map cursor to the particle field's coordinate space.
+    cursorWX =  (e.clientX / window.innerWidth  - 0.5) * SPREAD;
+    cursorWY = -(e.clientY / window.innerHeight - 0.5) * SPREAD;
+  });
+  window.addEventListener('mouseleave', () => { cursorWX = cursorWY = 1e6; });
+
+  /* -- SCROLL-DRIVEN CAMERA (dolly + rotate as hero scrolls away) -- */
+  let scrollProg = 0;
+  if (!REDUCED) {
+    ScrollTrigger.create({
+      trigger: hero, start: 'top top', end: 'bottom top', scrub: true,
+      onUpdate: (self) => { scrollProg = self.progress; }
+    });
+  }
+
+  const REPEL = 60, REPEL2 = REPEL * REPEL;
+
+  /* -- ANIMATE -- */
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // move particles + push them away from the cursor
+    for (let i = 0; i < COUNT; i++) {
+      let px = positions[i*3]   + velocities[i].x;
+      let py = positions[i*3+1] + velocities[i].y;
+
+      const dx = px - cursorWX, dy = py - cursorWY;
+      const d2 = dx*dx + dy*dy;
+      if (d2 < REPEL2 && d2 > 0.01) {
+        const f = (REPEL2 - d2) / REPEL2 * 6;
+        const d = Math.sqrt(d2);
+        px += (dx / d) * f;
+        py += (dy / d) * f;
+      }
+
+      positions[i*3]   = px;
+      positions[i*3+1] = py;
+      if (Math.abs(positions[i*3])   > SPREAD/2) velocities[i].x *= -1;
+      if (Math.abs(positions[i*3+1]) > SPREAD/2) velocities[i].y *= -1;
+    }
+    ptGeo.attributes.position.needsUpdate = true;
+
+    // connection lines
+    const lp = [];
+    for (let i = 0; i < COUNT; i++) {
+      for (let j = i+1; j < COUNT; j++) {
+        const dx = positions[i*3]   - positions[j*3];
+        const dy = positions[i*3+1] - positions[j*3+1];
+        if (dx*dx + dy*dy < LINK_DIST*LINK_DIST) {
+          lp.push(positions[i*3], positions[i*3+1], positions[i*3+2],
+                  positions[j*3], positions[j*3+1], positions[j*3+2]);
+        }
+      }
+    }
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lp), 3));
+
+    // rotate abstract objects
+    torus.rotation.x += 0.003;
+    torus.rotation.y += 0.005;
+    ico.rotation.x   += 0.004;
+    ico.rotation.z   += 0.003;
+
+    // subtle mouse parallax on whole scene
+    scene.rotation.y += (mx * 0.00008 - scene.rotation.y) * 0.04;
+    scene.rotation.x += (-my * 0.00008 - scene.rotation.x) * 0.04;
+
+    // scroll-driven camera: dolly in and tilt as the hero scrolls away
+    camera.position.z += (baseCamZ - scrollProg * 220 - camera.position.z) * 0.06;
+    camera.position.y += (scrollProg * 120 - camera.position.y) * 0.06;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // resize
+  window.addEventListener('resize', () => {
+    W = hero.offsetWidth; H = hero.offsetHeight;
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  });
+})();
+
+/* ── SPLIT HEADLINE INTO ANIMATABLE WORDS ── */
+// Wrap each word of the h1's text nodes in <span class="word">, leaving
+// existing element children (the <span>, <br>) intact.
+(function splitHeadline() {
+  const h1 = document.querySelector('.hero h1');
+  if (!h1) return;
+  const wrap = (node) => {
+    const frag = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach(tok => {
+      if (tok.trim() === '') { frag.appendChild(document.createTextNode(tok)); return; }
+      const s = document.createElement('span');
+      s.className = 'word';
+      s.textContent = tok;
+      frag.appendChild(s);
+    });
+    node.replaceWith(frag);
+  };
+  // Walk a snapshot of child nodes (live list mutates as we replace).
+  [...h1.childNodes].forEach(n => {
+    if (n.nodeType === 3) wrap(n);
+    else if (n.tagName === 'SPAN') [...n.childNodes].forEach(c => { if (c.nodeType === 3) wrap(c); });
+  });
+})();
+
+/* ── GSAP HERO ENTRANCE ── */
+const heroBits = ['.hero-badge', '.hero h1', '.hero-sub', '.metric', '.hero-ctas'];
+// Failsafe: no matter what the animation does, force the full hero copy
+// visible. Guarantees the headline/sub/metrics/CTAs always render.
+const revealHero = () => gsap.set(['.hero-inner', ...heroBits, '.hero h1 .word'], { opacity: 1, clearProps: 'transform' });
+
+if (REDUCED) {
+  revealHero();
+} else {
+  try {
+    // Set initial hidden state via GSAP (not CSS) so content shows if JS fails
+    gsap.set(heroBits, { opacity: 0 });
+
+    const heroTl = gsap.timeline({ delay: 0.3, onComplete: revealHero });
+    heroTl
+      .from('.hero-badge',  { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' })
+      .set('.hero h1', { opacity: 1 })
+      .from('.hero h1 .word', { opacity: 0, y: 40, rotateX: -40, stagger: 0.06, duration: 0.7, ease: 'power3.out' }, '-=0.3')
+      .from('.hero-sub',    { opacity: 0, y: 30, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+      .from('.metric',      { opacity: 0, y: 22, stagger: 0.13, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+      .from('.hero-ctas',   { opacity: 0, y: 18, duration: 0.5, ease: 'power3.out' }, '-=0.3');
+  } catch (err) {
+    revealHero();
+  }
+  // Hard backstop in case anything stalls the timeline.
+  setTimeout(revealHero, 4000);
+}
+
+/* ── COUNTER ANIMATION ── */
+document.querySelectorAll('.metric-num').forEach(el => {
+  const target = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  if (isNaN(target)) return;
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.to({ val: 0 }, {
+        val: target,
+        duration: 1.8,
+        ease: 'power2.out',
+        onUpdate: function() {
+          el.textContent = Math.round(this.targets()[0].val) + suffix;
+        }
+      });
+    }
+  });
+});
+
+/* ── SCROLL REVEALS ── */
+// Section tags + titles
+gsap.utils.toArray('.section-tag').forEach(el => {
+  gsap.from(el, { opacity: 0, x: -20, duration: 0.5,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' } });
+});
+gsap.utils.toArray('.section-title').forEach(el => {
+  gsap.from(el, { opacity: 0, y: 28, duration: 0.7,
+    scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' } });
+});
+gsap.utils.toArray('.section-sub').forEach(el => {
+  gsap.from(el, { opacity: 0, y: 20, duration: 0.6, delay: 0.15,
+    scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' } });
+});
+
+// Featured study
+gsap.from('.featured-study', {
+  opacity: 0, y: 50, duration: 1, ease: 'power3.out',
+  scrollTrigger: { trigger: '.featured-study', start: 'top 80%', toggleActions: 'play none none none' }
+});
+
+// Project cards stagger
+gsap.from('.project-card', {
+  opacity: 0, y: 50, stagger: 0.1, duration: 0.7, ease: 'power3.out',
+  scrollTrigger: { trigger: '.projects-grid', start: 'top 80%', toggleActions: 'play none none none' }
+});
+
+// Design system callout
+gsap.from('.ds-callout', {
+  opacity: 0, y: 30, duration: 0.7,
+  scrollTrigger: { trigger: '.ds-callout', start: 'top 85%', toggleActions: 'play none none none' }
+});
+
+// Email strips
+gsap.from('.email-strip', {
+  opacity: 0, y: 30, stagger: 0.15, duration: 0.7,
+  scrollTrigger: { trigger: '#email-design', start: 'top 80%', toggleActions: 'play none none none' }
+});
+
+// Proof bar items
+gsap.from('.proof-item', {
+  opacity: 0, x: -30, stagger: 0.08, duration: 0.5,
+  scrollTrigger: { trigger: '.proof-bar', start: 'top 92%', toggleActions: 'play none none none' }
+});
+
+// Experience items
+gsap.from('.exp-item', {
+  opacity: 0, x: -30, stagger: 0.1, duration: 0.65, ease: 'power3.out',
+  scrollTrigger: { trigger: '.exp-list', start: 'top 80%', toggleActions: 'play none none none' }
+});
+
+// Cert cards
+gsap.from('.cert-card', {
+  opacity: 0, y: 22, stagger: 0.09, duration: 0.55,
+  scrollTrigger: { trigger: '.certs-grid', start: 'top 82%', toggleActions: 'play none none none' }
+});
+
+// Gap fix items
+gsap.from('.gap-fix', {
+  opacity: 0, x: -18, stagger: 0.07, duration: 0.5,
+  scrollTrigger: { trigger: '.gap-fixes', start: 'top 82%', toggleActions: 'play none none none' }
+});
+
+// Skills pills
+gsap.from('.pill', {
+  opacity: 0, scale: 0.85, stagger: 0.03, duration: 0.4,
+  scrollTrigger: { trigger: '.skills-pills', start: 'top 85%', toggleActions: 'play none none none' }
+});
+
+// Edu cards
+gsap.from('.edu-card', {
+  opacity: 0, y: 30, stagger: 0.12, duration: 0.6,
+  scrollTrigger: { trigger: '.edu-grid', start: 'top 83%', toggleActions: 'play none none none' }
+});
+
+// Contact links
+gsap.from('.contact-link', {
+  opacity: 0, x: 30, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+  scrollTrigger: { trigger: '.contact-links', start: 'top 83%', toggleActions: 'play none none none' }
+});
+
+/* ── NAV HIDE ON SCROLL DOWN ── */
+let lastY = 0;
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > lastY && y > 80) {
+    gsap.to(navEl, { y: -64, duration: 0.3, ease: 'power2.in' });
+  } else {
+    gsap.to(navEl, { y: 0, duration: 0.35, ease: 'power2.out' });
+  }
+  lastY = y;
+});
+
+/* ── CARD MAGNETIC HOVER ── */
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    gsap.to(card, { y: -6, scale: 1.02, boxShadow: '0 16px 40px rgba(26,86,219,0.14)', duration: 0.3, ease: 'power2.out' });
+  });
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width/2)  / r.width  * 6;
+    const dy = (e.clientY - r.top  - r.height/2) / r.height * 6;
+    gsap.to(card, { rotateY: dx, rotateX: -dy, duration: 0.3, ease: 'power2.out', transformPerspective: 800 });
+  });
+  card.addEventListener('mouseleave', () => {
+    gsap.to(card, { y: 0, scale: 1, rotateX: 0, rotateY: 0, boxShadow: 'none', duration: 0.4, ease: 'power2.out' });
+  });
+});
+
+/* ── MAGNETIC BUTTONS ── */
+if (!REDUCED && !IS_MOBILE) {
+  document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - r.left - r.width / 2;
+      const dy = e.clientY - r.top  - r.height / 2;
+      gsap.to(btn, { x: dx * 0.3, y: dy * 0.4, duration: 0.35, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+    });
+  });
+}
+</script>
+</body>
+</html>
