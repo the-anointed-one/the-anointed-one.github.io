@@ -1,2 +1,2 @@
-# the-anointed-one.github.io
+# find me at https://benjamin-ajah.github.io/
 Redirect
