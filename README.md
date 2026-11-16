@@ -1,2 +1,2 @@
-# find me at https://benjamin-ajah.github.io/
+# Find me at https://benjamin-ajah.github.io/
 Redirect
